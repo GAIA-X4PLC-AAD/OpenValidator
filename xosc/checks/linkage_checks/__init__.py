@@ -1,0 +1,3 @@
+CHECKER_BUNDLE_NAME='Linkage'
+CHECKER_BUNDLE_DESCRIPTION='Checks linkage of provided OSC file.'
+CHECKER_BUNDLE_VERSION='1.0'

@@ -1,0 +1,104 @@
+{
+    "Schema": {
+        "check schema": {
+            "abort_if_error": false
+        }
+    },
+    "Semantic": {
+        "check signal position": {
+            "epsilon_s_on_road": 0.000001,            
+            "max_range_signal_t": 50,
+            "max_range_signal_zOffset": 20
+        },
+        "check signal size": {
+            "max_signal_width": 5,
+            "max_signal_height": 5
+        },
+        "check object position": {
+            "epsilon_s_on_road": 0.000001,            
+            "max_range_object_t": 50,
+            "max_range_object_zOffset": 20
+        },
+        "check object size": {
+            "max_object_length": 50,
+            "max_object_width": 50,
+            "max_object_radius": 50,
+            "max_object_height": 50
+        },        
+        "check road lane sOffset": {
+            "epsilon_length": 0.0000001
+        },
+        "check lanesection minimum length": {
+            "min_length": 0.01           
+        },
+        "check road lane width": {
+            "epsilon_sOffset": -0.01           
+        }
+    },
+    "Geometry": {
+        "check road min length": {
+            "min_length": 0.02            
+        },
+        "check road geometry length": {
+            "epsilon_length": 0.00000001,
+            "min_length": 0.01            
+        },
+        "check valid ParamPoly3": {
+            "epsilon_bV": 0.00000001
+        }
+    },
+    "ToolCompatibility": {
+        "check BMW Spider RoadType vs SpeedLimit": {
+            "speed_ranges": {
+                "rural": {
+                    "min": 50, 
+                    "max": 100
+                },
+                "motorway": {
+                    "min": 80, 
+                    "max": 999
+                },
+                "town": {
+                    "min": 10, 
+                    "max": 100
+                },
+                "lowSpeed": {
+                    "min": 10, 
+                    "max": 30
+                },
+                "pedestrian": {
+                    "min": 1, 
+                    "max": 20
+                },
+                "bicycle": {
+                    "min": 1, 
+                    "max": 40
+                },
+                "townExpressway": {
+                    "min": 80, 
+                    "max": 130
+                },
+                "townCollector": {
+                    "min": 50, 
+                    "max": 100
+                },
+                "townArterial": {
+                    "min": 50, 
+                    "max": 90
+                },
+                "townPrivate": {
+                    "min": 10, 
+                    "max": 30
+                },
+                "townLocal": {
+                    "min": 10, 
+                    "max": 30
+                },
+                "townPlayStreet": {
+                    "min": 10, 
+                    "max": 30
+                }
+            }         
+        }
+    }    
+}

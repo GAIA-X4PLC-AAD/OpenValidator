@@ -1,0 +1,33 @@
+{
+    "ToolCompatibility": {
+        "SimulatorESMINICheck": {
+
+        }
+    },
+    "Semantic": {
+        "CatalogChecker": {
+
+        }, 
+        "EntitiyChecker": {
+
+        }
+    },
+    "Geometry": {
+        "PositionChecker": {
+            
+        }
+    },
+    "Linkage": {
+        "LinkageChecker": {
+
+        }
+    },
+    "Schema": {
+        "ConventionChecker": {
+
+        },
+        "SchemaChecker": {
+
+        }
+    }
+}
