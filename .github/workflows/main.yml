@@ -12,10 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: open validator action step
-        uses: .
+        uses: ./
         id: open_validator
         with:
-          input_file: "sampleODR"
+          input_file: "data/inputs/sampleODR"
       # Use the output from the `odr_validator` step
       - name: Get the output
         run: echo "The output was ${{ steps.odr_validator.outputs.time }}"

@@ -5,7 +5,11 @@ inputs:
   input_file: # id of input
     description: "Input file to validate"
     required: true
-    default: "sampleODR"
+    default: "data/inputs/sampleODR"
+  output_dir: # id of input
+    description: "Output dir"
+    required: false
+    default: "data/outputs"
 outputs:
   time: # id of output
     description: "Result files"
@@ -14,3 +18,4 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.input_file }}
+    - ${{ inputs.output_dir }}
