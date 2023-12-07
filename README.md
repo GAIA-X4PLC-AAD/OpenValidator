@@ -1,9 +1,11 @@
 # Checker Lib 
-check validate OpenDRIVE® files (.xodr) for schema, semantic, geometry in the context of GaiaX.  
-
+the Checker Lib checks files/folders for validity. The framework has a flexible structure so that further formats, categories, checks and output formats can be added.
+The following are currently checked 
+- ASAM OpenDRIVE 1.1 - 1.7
+- ASAM OpenSCENARIO 0.9.1 - 1.1.0
 
 # Motivation
-We want to achieve a free, comprehensive and uniform validation of ASAM OpenDRIVE data
+We want to achieve a free, comprehensive and uniform validation of ASAM OpenX Standards
 
 # Installation / How to setup
 
@@ -64,8 +66,8 @@ Used integrated development environment: Visual Studio Code version 1.84.2
      - [categories]
        - __init__.py
          - category / bundle information, define check order
-     - check_[type].py
-       - individual check
+       - check_[type].py
+         - individual check
    - [examples]
     - examples for each check and category
 
