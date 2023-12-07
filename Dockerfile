@@ -21,4 +21,4 @@ RUN ["chmod", "+x", "entrypoint_GitHubAction_Open_Validator.sh"]
 # CMD [ "python3", "main.py" ]
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/bin/bash", "/entrypoint_GitHubAction_Open_Validator.sh"]
+ENTRYPOINT ["/bin/bash", "/app/entrypoint_GitHubAction_Open_Validator.sh"]
