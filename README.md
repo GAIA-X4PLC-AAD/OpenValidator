@@ -46,7 +46,7 @@ Used integrated development environment: Visual Studio Code version 1.84.2
 
 # Structure
 - Main.py
-  - reads, checks parameters and for each file calls validation and writes output
+  - reads, checks parameters and for each file calls validation and writes output
 - validator.py
   - loads registered bundles, loads and executes check
 - result_report.py
@@ -59,11 +59,11 @@ Used integrated development environment: Visual Studio Code version 1.84.2
    - format.json
      - informatoin about format
    - [checks]
-    - __init__.py
-      - define category / bundle order 
-    - [categories]
      - __init__.py
-       - category / bundle information, define check order
+       - define category / bundle order 
+     - [categories]
+       - __init__.py
+         - category / bundle information, define check order
      - check_[type].py
        - individual check
    - [examples]
