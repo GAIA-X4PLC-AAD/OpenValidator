@@ -16,6 +16,7 @@ jobs:
         id: open_validator
         with:
           input_file: "data/inputs/sampleODR"
-      # Use the output from the `odr_validator` step
+          output_dir: "data/outputs"
+      # Use the output from the `open_validator` step
       - name: Get the output
-        run: echo "The output was ${{ steps.odr_validator.outputs.time }}"
+        run: echo "The output was ${{ steps.open_validator.outputs.time }}"
