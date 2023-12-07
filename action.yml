@@ -1,0 +1,16 @@
+# action.yml
+name: "Open Validator"
+description: "Run the Open Validator in GitHub Actions"
+inputs:
+  input_file: # id of input
+    description: "Input file to validate"
+    required: true
+    default: "sampleODR"
+outputs:
+  time: # id of output
+    description: "Result files"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.input_file }}

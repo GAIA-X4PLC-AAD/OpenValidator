@@ -1,0 +1,12 @@
+version: '3'
+services:
+  open_validator:
+    container_name: open_validator
+    image: open_validator
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+    entrypoint: ["/bin/bash", "/app/entrypoint.sh"]
+

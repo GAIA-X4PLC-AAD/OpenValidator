@@ -1,0 +1,17 @@
+name: Run Docker Compose
+
+on:
+  push:
+    branches:
+      - OpenValidator_as_github_action
+
+jobs:
+  open_validator_job:
+    runs-on: ubuntu-latest
+    name: A job to validate ODR files
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build and run Docker Compose
+        run: echo "test"
+        # run: docker-compose -f "tools/docker-compose.yml" up -d --build

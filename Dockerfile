@@ -13,7 +13,12 @@ RUN pip install --no-cache-dir scipy lxml
 # Copy the entire codebase to the working directory
 COPY . .
 
-RUN chmod +x entrypoint.sh
+RUN ["chmod", "+x", "entrypoint.sh"]
+
+RUN ["chmod", "+x", "entrypoint_GitHubAction_Open_Validator.sh"]
 
 # Set the entry point for the container
 # CMD [ "python3", "main.py" ]
+
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint_GitHubAction_Open_Validator.sh"]
