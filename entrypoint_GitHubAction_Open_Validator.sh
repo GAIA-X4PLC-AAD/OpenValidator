@@ -8,6 +8,7 @@ echo "param 2 : ($2)"
 echo $(python3 -c "import sys, json; print(json.loads('{\"output\":\"$2\", \"validation\":\"success\"}')[\"validation\"])")
 if [ $exit_code -eq 0 ]; then
     echo "success"
+    echo "validation_status=success" >> $GITHUB_OUTPUT
     echo "validation_result={\"output\":\"$2\", \"validation\":\"success\"}" >> $GITHUB_OUTPUT
     exit 0
 else

@@ -11,8 +11,10 @@ inputs:
     required: false
     default: "data/outputs"
 outputs:
+  validation_status: # id of output
+    description: "validation status"
   validation_result: # id of output
-    description: "Result files"
+    description: "General Result"
 runs:
   using: "docker"
   image: "Dockerfile"
