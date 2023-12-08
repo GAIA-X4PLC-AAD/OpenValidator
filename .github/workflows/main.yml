@@ -19,6 +19,5 @@ jobs:
           output_dir: "data/outputs"
       # Use the output from the `open_validator` step
       - name: Analyse results
-        run: echo "The validation result was ${{ steps.open_validator.outputs.validation_result }}" \
-             echo "The validation result was ${{ steps.open_validator.outputs.validation_status }}"
-        # run: python3 -c "import sys, json; print(json.loads('${{ steps.open_validator.outputs.validation_result }}')["validation"])"
+        run: echo "Genral_Result was ${{ steps.open_validator.outputs.validation_result }}" \
+             echo "Validation Status was ${{ steps.open_validator.outputs.validation_status }}"

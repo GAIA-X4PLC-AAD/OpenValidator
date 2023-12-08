@@ -3,16 +3,17 @@ exit_code=$?
 time=$(date)
 echo "returns : $returns"
 echo "EXIT CODE : $exit_code"
-echo "param 1 : ($1)"
-echo "param 2 : ($2)"
-echo $(python3 -c "import sys, json; print(json.loads('{\"output\":\"$2\", \"validation\":\"success\"}')[\"validation\"])")
+echo "Input File : ($1)"
+echo "Output Dir : ($2)"
+# echo $(python3 -c "import sys, json; print(json.loads('{\"output\":\"$2\", \"validation\":\"success\"}')[\"validation\"])")
 if [ $exit_code -eq 0 ]; then
-    echo "success"
+    echo "validation_status : success"
     echo "validation_status=success" >> $GITHUB_OUTPUT
     echo "validation_result={\"output\":\"$2\", \"validation\":\"success\"}" >> $GITHUB_OUTPUT
     exit 0
 else
-    echo "failure"
+    echo "validation_status : failure"
+    echo "validation_status=failure" >> $GITHUB_OUTPUT
     echo "validation_result={\"output\":\"$2\", \"validation\":\"failure\"}" >> $GITHUB_OUTPUT
     exit 1
 fi
