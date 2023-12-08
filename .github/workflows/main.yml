@@ -20,4 +20,4 @@ jobs:
       # Use the output from the `open_validator` step
       - name: Analyse results
         # run: echo "The validation result was ${{ steps.open_validator.outputs.validation_result }}"
-        run: python3 -c "import sys, json; print(json.loads('${{ steps.open_validator.outputs.validation_result }}')['validation'])"
+        run: python3 -c "import sys, json; print(json.loads("${{ steps.open_validator.outputs.validation_result }}")["validation"])"
