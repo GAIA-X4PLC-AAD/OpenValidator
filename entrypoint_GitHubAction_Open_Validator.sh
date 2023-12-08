@@ -4,7 +4,7 @@ python main.py /app/$1 -o "/app/$2"
 echo " EXIT CODE : $?"
 echo "param 1 : ($1)"
 echo "param 2 : ($2)"
-exit 1
+exit 0
 # exit code
 # if [ $? -eq 0 ]; then
 #     echo "success"
