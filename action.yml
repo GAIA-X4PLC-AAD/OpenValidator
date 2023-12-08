@@ -11,7 +11,7 @@ inputs:
     required: false
     default: "data/outputs"
 outputs:
-  time: # id of output
+  validation_result: # id of output
     description: "Result files"
 runs:
   using: "docker"

@@ -7,10 +7,10 @@ echo "param 1 : ($1)"
 echo "param 2 : ($2)"
 if [ $exit_code -eq 0 ]; then
     echo "success"
-    echo "time=$time, output=/data, sucess" >> $GITHUB_OUTPUT
+    echo "validation_result= time:$time, output:/data, sucess" >> $GITHUB_OUTPUT
     exit 0
 else
     echo "failure"
-    echo "time=$time, output=/data, failure" >> $GITHUB_OUTPUT
+    echo "validation_result= time:$time, output:/data, failure" >> $GITHUB_OUTPUT
     exit 1
 fi
