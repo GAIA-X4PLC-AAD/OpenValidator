@@ -1,7 +1,8 @@
-echo $1
-echo $2
-python main.py /app/$1 -o "/app/$2"
-echo " EXIT CODE : $?"
+result=$(python main.py /app/$1 -o "/app/$2")
+echo $result
+
+echo "result : $result"
+echo "EXIT CODE : $?"
 echo "param 1 : ($1)"
 echo "param 2 : ($2)"
 exit 0
