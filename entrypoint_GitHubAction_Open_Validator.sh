@@ -1,11 +1,16 @@
 result=$(python main.py /app/$1 -o "/app/$2")
-echo $result
-
+exit_code=$?
 echo "result : $result"
-echo "EXIT CODE : $?"
+echo "EXIT CODE : $exit_code"
 echo "param 1 : ($1)"
 echo "param 2 : ($2)"
-exit 0
+if [ $exit_code -eq 0 ]; then
+    echo "success"
+    exit 0
+else
+    echo "failure"
+    exit 1
+fi
 # exit code
 # if [ $? -eq 0 ]; then
 #     echo "success"
@@ -20,3 +25,4 @@ exit 0
 #     # echo "time=$time, output=/data, failure" >> $GITHUB_OUTPUT
 #     # exit 1
 # fi
+echo "end"
