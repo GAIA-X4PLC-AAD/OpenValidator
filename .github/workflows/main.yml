@@ -18,5 +18,6 @@ jobs:
           input_file: "data/inputs/sampleODR"
           output_dir: "data/outputs"
       # Use the output from the `open_validator` step
-      - name: Get the output
-        run: echo "The output was ${{ steps.open_validator.outputs.validation_result }}"
+      - name: Analyse results
+        # run: echo "The validation result was ${{ steps.open_validator.outputs.validation_result }}"
+        run: python3 -c "import sys, json; print(json.load(${{ steps.open_validator.outputs.validation_result }})['validation'])"
