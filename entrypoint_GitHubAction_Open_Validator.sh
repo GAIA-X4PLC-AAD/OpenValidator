@@ -4,7 +4,7 @@ echo "result : $result"
 echo "EXIT CODE : $exit_code"
 echo "param 1 : ($1)"
 echo "param 2 : ($2)"
-if [ $exit_code -eq 0 ]; then
+if [ $exit_code -eq 1 ]; then
     echo "success"
     exit 0
 else
@@ -25,4 +25,3 @@ fi
 #     # echo "time=$time, output=/data, failure" >> $GITHUB_OUTPUT
 #     # exit 1
 # fi
-echo "end"
