@@ -1,7 +1,7 @@
 {
     "Schema": {
         "check schema": {
-            "abort_if_error": false
+            "abort_if_error": true
         }
     },
     "Semantic": {
