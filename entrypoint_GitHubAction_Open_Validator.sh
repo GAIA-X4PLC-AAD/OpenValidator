@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Param 1 : ($1)"
+echo "Param 2 : ($2)"
+echo "Param 3 : ($3)"
+echo "Param 4 : ($4)"
+
 returns=$(python main.py /app/$1 -o "/app/$2" -e exit-if-error)
 exit_code=$?
 time=$(date)
