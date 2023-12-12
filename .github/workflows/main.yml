@@ -15,8 +15,6 @@ jobs:
         uses: ./
         id: open_validator
         with:
-          command: "/bin/bash"
-          entrypoint: "/app/entrypoint_GitHubAction_Open_Validator.sh"
           input_file: "data/inputs/sampleODR"
           output_dir: "data/outputs"
       # Use the output from the `open_validator` step
