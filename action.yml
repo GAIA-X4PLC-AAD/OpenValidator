@@ -2,14 +2,6 @@
 name: "Open Validator"
 description: "Run the Open Validator in GitHub Actions"
 inputs:
-  command: # id of input
-    description: "bash command"
-    required: false
-    default: "/bin/bash"
-  entrypoint: # id of input
-    description: "bash entrypoint"
-    required: false
-    default: "/app/entrypoint_GitHubAction_Open_Validator.sh"
   input_file: # id of input
     description: "Input file to validate"
     required: true
@@ -27,7 +19,11 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.command }}
-    - ${{ inputs.entrypoint }}
+    - "-i"
     - ${{ inputs.input_file }}
+    - "-o"
     - ${{ inputs.output_dir }}
+    - "-e"
+    - "true"
+    - "-t"
+    - "github"

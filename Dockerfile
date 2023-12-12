@@ -14,7 +14,8 @@ RUN pip install --no-cache-dir scipy lxml
 COPY . .
 
 RUN chmod +x entrypoint.sh
-RUN chmod +x entrypoint_GitHubAction_Open_Validator.sh
 
 # Set the entry point for the container
 # CMD [ "python3", "main.py" ]
+
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
