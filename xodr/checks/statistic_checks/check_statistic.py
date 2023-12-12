@@ -11,7 +11,14 @@ def calc_frequency(checker_data: CheckerData) -> None:
 
     report_num_nodes(checker_data, 'road')
     report_num_nodes(checker_data, 'junction')
-    
+
+    # network length
+    roads = checker_data.data.findall(f".//road")
+    roadLengths = 0.0
+    for road in roads:
+        roadLengths += float(road.attrib["length"])
+    checker_data.checker.gen_issue(IssueLevel.INFORMATION, f'RoadNetwork length {roadLengths} m')  
+
     report_num_nodes(checker_data, 'signal')
     report_num_nodes(checker_data, 'object')
     
