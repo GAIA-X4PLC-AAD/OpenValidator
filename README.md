@@ -38,6 +38,17 @@ Used integrated development environment: Visual Studio Code version 1.84.2
 4. Select the openDrive file you want to parse in the file dialog.
 5. You will find the parsed file in the same file path as the source file.
 
+# How to build and run with Docker
+1. Open your console/terminal
+2. Navigate to cloned folder from GitHub with the Dockerfile in it
+3. Build the docker image with: ```docker build . -t open_validator```
+4. Run the docker image with: ```docker run -it --rm -v PATH_TO_DATA_FOLDER:/app/data/  open_validator "/bin/bash" "/app/entrypoint.sh" "data/inputs/sampleODR" "data/outputs"```
+5. notes:
+    - PATH_TO_DATA_FOLDER is the path to the folder where the input data is stored in it and output data will be stored in it, e.g. "/home/user/data" or "C:\Users\user\data" or simply "data" (when you are in the folder where the data folder is in it).
+    - data folder must contains a folder named "inputs". This folder must contains the file you want to parse, e.g sampleODR.
+    - "data/inputs/sampleODR" is the path to the file you want to parse
+    - "data/outputs" is the path to the folder where the parsed file should be stored
+6. You will find the parsed file in the "PATH_TO_DATA_FOLDER/outputs".
 
 # List of tests defined in the context of GaiaX:
  see
