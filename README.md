@@ -59,6 +59,14 @@ Used integrated development environment: Visual Studio Code version 1.84.2
     - "-e true" is the argument to exit the script if an error occurs.
 6. You will find the parsed file in the "PATH_TO_DATA_FOLDER/outputs".
 
+# How to build and run with docker-compose
+If you do not want to build the docker image yourself, and you have already installed docker on your machine, you can use following steps to run the docker image with docker-compose:
+1. Open your console/terminal
+2. Navigate to cloned folder from GitHub with the docker-compose.yml in it
+3. change the content of the data/inputs/sampleODR file with your own OpenDrive file
+4. Run the docker image with: ```docker compose up```
+5. You will find the parsed file in the "data/outputs".
+
 # Structure
 - Main.py
   - reads, checks parameters and for each file calls validation and writes output
