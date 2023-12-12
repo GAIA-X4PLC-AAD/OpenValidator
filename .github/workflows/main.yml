@@ -1,0 +1,24 @@
+name: Run Validator
+
+on:
+  push:
+    branches: [OpenValidator_as_github_action]
+
+jobs:
+  open_validator_job:
+    runs-on: ubuntu-latest
+    name: A job to validate ODR files
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: open validator action step
+        uses: ./
+        id: open_validator
+        with:
+          input_file: "data/inputs/sampleODR"
+          output_dir: "data/outputs"
+      # Use the output from the `open_validator` step
+      - name: Analyse results
+        run:
+          echo "Genral_Result was ${{ steps.open_validator.outputs.validation_result }}" \
+          echo "Validation Status was ${{ steps.open_validator.outputs.validation_status }}"
