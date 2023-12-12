@@ -1,3 +1,5 @@
+#!/bin/bash
+
 returns=$(python main.py /app/$1 -o "/app/$2" -e exit-if-error)
 exit_code=$?
 time=$(date)
