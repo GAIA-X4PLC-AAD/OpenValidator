@@ -34,11 +34,14 @@ echo "Output Dir : ($output_dir)"
 echo "Type of Execution : ($type_of_execution)"
 echo "Exit if Error : ($exit_if_error)"
 
+currDir=$(dirname $0)
+
 if [ $exit_if_error == true ]; then
-    returns=$(python main.py /app/$input_file -o "/app/$output_dir" -e exit-if-error)
+    returns=$(python $currDir/main.py $input_file -o "$output_dir" -e exit-if-error)
 else
-    returns=$(python main.py /app/$input_file -o "/app/$output_dir")
+    returns=$(python $currDir/main.py $input_file -o "$output_dir")
 fi
+
 exit_code=$?
 time=$(date)
 echo "Returns : $returns"
