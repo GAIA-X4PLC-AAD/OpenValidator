@@ -26,7 +26,7 @@ def main():
     parser.add_argument('-e', '--exit-type', choices=['no-exit', 'exit-if-error'], default='no-exit', help='Should the script be terminated after an error or not.')
     parser.add_argument('-a', '--addition-check-dirs', action='append', help='Additional directories for validation checks.')
     parser.add_argument('-c', '--config', type=str, help='Path to config file. Otherwise the config is taken from the format folder')
-    parser.add_argument('-f', '--format', type=str, default='xodr', help='Specification of the formats to be checked (file extension or check folder), e.g. xodr for OpenDrive.') # TODO format dependent
+    parser.add_argument('-f', '--format', type=str, help='Specification of the formats to be checked (file extension or check folder), e.g. xodr for OpenDrive.') # TODO format dependent
     parser.add_argument('INPUT_FILES', nargs='+', help='file(s) or folder to validate')
 
     args = parser.parse_args()
