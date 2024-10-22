@@ -26,7 +26,7 @@ def calc_frequency(checker_data: CheckerData) -> None:
     signals = checker_data.data.findall(f".//signal")
     signal_types = dict()
     for signal in signals:
-        type_str = f'{signal.attrib['type']}_{signal.attrib['subtype']}'
+        type_str = f'{signal.attrib["type"]}_{signal.attrib["subtype"]}'
         if type_str in signal_types:
             signal_types[type_str] = signal_types[type_str] + 1
         else:
@@ -40,7 +40,7 @@ def calc_frequency(checker_data: CheckerData) -> None:
     objects = checker_data.data.findall(f".//object")
     object_types = dict()
     for object in objects:
-        type_str = f'{object.attrib['type']}'
+        type_str = f'{object.attrib["type"]}'
         if type_str in object_types:
             object_types[type_str] = object_types[type_str] + 1
         else:
