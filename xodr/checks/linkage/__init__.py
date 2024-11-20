@@ -1,3 +1,0 @@
-CHECKER_BUNDLE_NAME='Linkage'
-CHECKER_BUNDLE_DESCRIPTION='check linkage of references files like OpenCRG'
-CHECKER_BUNDLE_VERSION='1.0'
