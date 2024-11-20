@@ -7,13 +7,18 @@
 import argparse
 import logging
 import types
+import sys
+#import os
+
+import sys
+print(sys.path)
 
 from qc_baselib import Configuration, Result, StatusType
 from qc_baselib.models.common import ParamType
 
 from openmsl_qc_opendrive import constants
 from openmsl_qc_opendrive.checks import geometry
-from openmsl_qc_opendrive.checks import basic
+#from openmsl_qc_opendrive.checks import basic
 from openmsl_qc_opendrive.base import models, utils
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
@@ -35,7 +40,7 @@ def args_entrypoint() -> argparse.Namespace:
 def execute_checker(
     checker: types.ModuleType,
     checker_data: models.CheckerData,
-    required_definition_setting: bool = True,
+    required_definition_setting: bool = False,
 ) -> None:
     # Register checker
     checker_data.result.register_checker(
@@ -141,7 +146,7 @@ def run_checks(config: Configuration, result: Result) -> None:
     #execute_checker(semantic.road_lane_level_true_one_side, checker_data)
 
     # 2. Run geometry checks
-    #execute_checker(geometry.road_geometry_parampoly3_length_match, checker_data)
+    execute_checker(geometry.road_geometry_parampoly3_attributes_valid, checker_data)
 
     # 3. Run linkage checks
 

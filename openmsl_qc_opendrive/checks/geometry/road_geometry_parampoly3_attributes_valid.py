@@ -10,13 +10,13 @@ from qc_baselib import IssueSeverity
 
 from openmsl_qc_opendrive import constants
 from openmsl_qc_opendrive.base import models, utils
-from openmsl_qc_opendrive import basic_preconditions
+#from openmsl_qc_opendrive import basic_preconditions
 
 CHECKER_ID = "check_openmsl_xodr_road_geometry_parampoly3_attributes_valid"
 CHECKER_DESCRIPTION = (
     "ParamPoly3 parameters @aU, @aV and @bV shall be zero, @bU shall be > 0"
 )
-CHECKER_PRECONDITIONS = basic_preconditions.CHECKER_PRECONDITIONS
+CHECKER_PRECONDITIONS = ""#basic_preconditions.CHECKER_PRECONDITIONS
 RULE_UID = "openmsl.net:xodr:1.7.0:road.geometry.parampoly3.attributes_valid"
 
 TOLERANCE_THRESHOLD_BV = 0.001
