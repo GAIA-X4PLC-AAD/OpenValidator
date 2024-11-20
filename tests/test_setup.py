@@ -9,9 +9,9 @@ import sys
 
 from typing import List
 
-import openmsl_cb_opendrive.main as main
+import openmsl_qc_opendrive.main as main
 
-from openmsl_cb_opendrive import constants
+from openmsl_qc_opendrive import constants
 from qc_baselib import Configuration, Result, IssueSeverity, StatusType
 
 CONFIG_FILE_PATH = "bundle_config.xml"

@@ -10,7 +10,7 @@ import pytest
 from typing import List
 
 from qc_baselib import IssueSeverity
-from openmsl_cb_opendrive.checks import geometry
+from openmsl_qc_opendrive.checks import geometry
 
 from test_setup import *
 

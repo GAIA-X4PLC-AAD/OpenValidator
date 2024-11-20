@@ -8,9 +8,9 @@ import logging
 
 from qc_baselib import IssueSeverity
 
-from openmsl_cb_opendrive import constants
-from openmsl_cb_opendrive.base import models, utils
-from openmsl_cb_opendrive import basic_preconditions
+from openmsl_qc_opendrive import constants
+from openmsl_qc_opendrive.base import models, utils
+from openmsl_qc_opendrive import basic_preconditions
 
 CHECKER_ID = "check_openmsl_xodr_road_geometry_parampoly3_attributes_valid"
 CHECKER_DESCRIPTION = (

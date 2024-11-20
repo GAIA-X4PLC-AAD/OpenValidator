@@ -4,7 +4,7 @@
 # Public License, v. 2.0. If a copy of the MPL was not distributed
 # with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-from openmsl_cb_opendrive.checks.basic import (
+from openmsl_qc_opendrive.checks.basic import (
     valid_xml_document,
     root_tag_is_opendrive,
     fileheader_is_present,

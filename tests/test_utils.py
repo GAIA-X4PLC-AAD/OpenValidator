@@ -6,7 +6,7 @@
 
 import pytest
 from lxml import etree
-from openmsl_cb_opendrive.base import utils
+from openmsl_qc_opendrive.base import utils
 
 
 def test_get_root_without_default_namespace() -> None:

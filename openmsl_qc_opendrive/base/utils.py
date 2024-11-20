@@ -12,7 +12,7 @@ from lxml import etree
 import pyclothoids as pc
 import transforms3d
 
-from openmsl_cb_opendrive.base import models
+from openmsl_qc_opendrive.base import models
 
 EPSILON = 1.0e-6
 ZERO_OFFSET_POLY3 = models.OffsetPoly3(

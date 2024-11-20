@@ -11,10 +11,10 @@ import types
 from qc_baselib import Configuration, Result, StatusType
 from qc_baselib.models.common import ParamType
 
-from openmsl_cb_opendrive import constants
-from openmsl_cb_opendrive.checks import geometry
-from openmsl_cb_opendrive.checks import basic
-from openmsl_cb_opendrive.base import models, utils
+from openmsl_qc_opendrive import constants
+from openmsl_qc_opendrive.checks import geometry
+from openmsl_qc_opendrive.checks import basic
+from openmsl_qc_opendrive.base import models, utils
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 
