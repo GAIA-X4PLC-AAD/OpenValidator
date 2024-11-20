@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "openmsl-qc-opendrive"
+version = "0.0.1"
+description = "This project implements the OpenDrive Checker for OpenMSL."
+authors = ["Mirco Nierenz <mirco.nierenz@triangraphics.de>", "Michael Hoehndorf <michael.hoehendorf@triangraphics.de>"]
+license = "MPL-2.0"
+readme = "README.md"
+packages = [
+    { include = "openmsl_qc_opendrive" },
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+asam-qc-baselib = "^1.0.0rc1"
+lxml = "^5.2.2"
+numpy = "^1.26.0"
+scipy = "^1.14.0"
+pyclothoids = "^0.1.5"
+transforms3d = "^0.4.2"
+xmlschema = "^3.3.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+black = "^24.4.2"
+
+[tool.poetry.scripts]
+openmsl_qc_opendrive = 'openmsl_qc_opendrive.main:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
