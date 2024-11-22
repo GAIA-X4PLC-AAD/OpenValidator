@@ -5,5 +5,7 @@
 # with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 from . import (
-    road_geometry_parampoly3_attributes_valid as road_geometry_parampoly3_attributes_valid,
+    road_geometry_length as road_geometry_length,
+    road_geometry_parampoly3_attributes as road_geometry_parampoly3_attributes,
+    road_min_length as road_min_length
 )

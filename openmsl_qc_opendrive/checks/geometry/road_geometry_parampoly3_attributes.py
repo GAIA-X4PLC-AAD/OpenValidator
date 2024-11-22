@@ -10,14 +10,11 @@ from qc_baselib import IssueSeverity
 
 from openmsl_qc_opendrive import constants
 from openmsl_qc_opendrive.base import models, utils
-#from openmsl_qc_opendrive import basic_preconditions
 
-CHECKER_ID = "check_openmsl_xodr_road_geometry_parampoly3_attributes_valid"
-CHECKER_DESCRIPTION = (
-    "ParamPoly3 parameters @aU, @aV and @bV shall be zero, @bU shall be > 0"
-)
+CHECKER_ID = "check_openmsl_xodr_road_geometry_parampoly3_attributes"
+CHECKER_DESCRIPTION = "ParamPoly3 parameters @aU, @aV and @bV shall be zero, @bU shall be > 0"
 CHECKER_PRECONDITIONS = ""#basic_preconditions.CHECKER_PRECONDITIONS
-RULE_UID = "openmsl.net:xodr:1.7.0:road.geometry.parampoly3.attributes_valid"
+RULE_UID = "openmsl.net:xodr:1.4.0:road.geometry.parampoly3.attributes"
 
 TOLERANCE_THRESHOLD_BV = 0.001
 
@@ -35,25 +32,24 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
 
             param_poly3 = utils.get_arclen_param_poly3_from_geometry(geometry)
             if param_poly3 is None:
-                continue
-
-            u = utils.poly3_to_polynomial(param_poly3.u)
-            v = utils.poly3_to_polynomial(param_poly3.v)
+                param_poly3 = utils.get_normalized_param_poly3_from_geometry(geometry)
+                if param_poly3 is None:
+                    continue
 
             s_coordinate = utils.get_s_from_geometry(geometry)
 
-            issue_descriptions = list
-            if u.a != 0.0:                
-                issue_descriptions.extend(f"road {roadID} has invalid paramPoly3 : aU != 0.0 ({u.a}) at s={s_coordinate}")
+            issue_descriptions = []
+            if param_poly3.u.a != 0.0:                
+                issue_descriptions.append(f"road {roadID} has invalid paramPoly3 : aU != 0.0 ({param_poly3.u.a}) at s={s_coordinate}")
 
-            if v.a != 0.0:
-                issue_descriptions.extend(f"road {roadID} has invalid paramPoly3 : aV != 0.0 ({u.a}) at s={s_coordinate}")
+            if param_poly3.v.a != 0.0:
+                issue_descriptions.append(f"road {roadID} has invalid paramPoly3 : aV != 0.0 ({param_poly3.v.a}) at s={s_coordinate}")
 
-            if abs(v.b) > TOLERANCE_THRESHOLD_BV:
-                issue_descriptions.extend(f"road {roadID} has invalid paramPoly3 : abs(bV) > {TOLERANCE_THRESHOLD_BV} ({v.b}) at s={s_coordinate}")              
+            if abs(param_poly3.v.b) > TOLERANCE_THRESHOLD_BV:
+                issue_descriptions.append(f"road {roadID} has invalid paramPoly3 : abs(bV) > {TOLERANCE_THRESHOLD_BV} ({param_poly3.v.b}) at s={s_coordinate}")              
 
-            if u.b <= 0.0:
-                issue_descriptions.extend(f"road {roadID} has invalid paramPoly3 : bU <= 0.0 ({u.b}) at s={s_coordinate}")
+            if param_poly3.u.b <= 0.0:
+                issue_descriptions.append(f"road {roadID} has invalid paramPoly3 : bU <= 0.0 ({param_poly3.u.b}) at s={s_coordinate}")
 
             for description in issue_descriptions:
                 # register issues
@@ -94,17 +90,17 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
 
 def check_rule(checker_data: models.CheckerData) -> None:
     """
-    Rule ID: openmsl.net:xodr:1.7.0:road.geometry.parampoly3.attributes_valid
+    Rule ID: openmsl.net:xodr:1.4.0:road.geometry.parampoly3.attributes
 
     Description: ParamPoly3 parameters @aU, @aV and @bV shall be zero, @bU shall be > 0.
 
     Severity: WARNING
 
-    Version range: [1.7.0, )
+    Version range: [1.4.0, )
 
     Remark:
         TODO
     """
-    logging.info("Executing road.geometry.parampoly3.attributes_valid check.")
+    logging.info("Executing road.geometry.parampoly3.attributes check.")
 
     _check_all_roads(checker_data)
