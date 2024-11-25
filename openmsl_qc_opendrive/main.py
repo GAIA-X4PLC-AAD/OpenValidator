@@ -18,8 +18,9 @@ from qc_baselib.models.common import ParamType
 
 from openmsl_qc_opendrive import constants
 from openmsl_qc_opendrive.checks import geometry
-#from openmsl_qc_opendrive.checks import semantic
+from openmsl_qc_opendrive.checks import semantic
 from openmsl_qc_opendrive.checks import statistic
+from openmsl_qc_opendrive.checks import tool_compatibility_checks
 #from openmsl_qc_opendrive.checks import basic
 from openmsl_qc_opendrive.base import models, utils
 
@@ -148,8 +149,8 @@ def run_checks(config: Configuration, result: Result) -> None:
     #execute_checker(semantic.road_lane_level_true_one_side, checker_data)
     #execute_checker(semantic.junction_connection_lane_link_id_validity, checker_data)
     #execute_checker(semantic.junction_connection_lane_linkage_order, checker_data)
-    #execute_checker(semantic.road_lane_link_id_validity, checker_data)
-    #execute_checker(semantic.road_lane_type_none, checker_data)
+    execute_checker(semantic.road_lane_link_id, checker_data)
+    execute_checker(semantic.road_lane_type_none, checker_data)
     
 
     # 2. Run geometry checks
@@ -160,6 +161,7 @@ def run_checks(config: Configuration, result: Result) -> None:
     # 3. Run linkage checks
 
     # 4. Run tool compatibility checks
+    execute_checker(tool_compatibility_checks.road_type_vs_speed_limit, checker_data)
 
     # 5. Run tool statistic checks
     execute_checker(statistic.statistic, checker_data)
