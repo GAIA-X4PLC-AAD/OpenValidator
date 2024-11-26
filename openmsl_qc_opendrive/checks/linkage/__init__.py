@@ -5,8 +5,5 @@
 # with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 from . import (
-    junction_connection_lane_link_id as junction_connection_lane_link_id,
-    junction_connection_lane_linkage_order as junction_connection_lane_linkage_order,
-    road_lane_link_id as road_lane_link_id,
-    road_lane_type_none as road_lane_type_none,    
+    crg_reference as crg_reference
 )

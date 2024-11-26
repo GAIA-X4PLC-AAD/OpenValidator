@@ -11,12 +11,10 @@ from qc_baselib import IssueSeverity
 from openmsl_qc_opendrive import constants
 from openmsl_qc_opendrive.base import models, utils
 
-CHECKER_ID = "check_openmsl_xodr_junction_connection_lane_link_id_validity"
-CHECKER_DESCRIPTION = (
-    "linked Lane shall exist in connected LaneSection"
-)
+CHECKER_ID = "check_openmsl_xodr_junction_connection_lane_link_id"
+CHECKER_DESCRIPTION = "linked Lane shall exist in connected LaneSection"
 CHECKER_PRECONDITIONS = ""#basic_preconditions.CHECKER_PRECONDITIONS
-RULE_UID = "openmsl.net:xodr:1.7.0:road.semantic.junction_connection_lane_link_id_validity"
+RULE_UID = "openmsl.net:xodr:1.4.0:road.semantic.junction_connection_lane_link_id"
 
 def _check_all_junctions(checker_data: models.CheckerData) -> None:
     roads = utils.get_road_id_map(checker_data.input_file_xml_root)
@@ -69,17 +67,17 @@ def _check_all_junctions(checker_data: models.CheckerData) -> None:
 
 def check_rule(checker_data: models.CheckerData) -> None:
     """
-    Rule ID: openmsl.net:xodr:1.7.0:road.semantic.junction_connection_lane_link_id_validity
+    Rule ID: openmsl.net:xodr:1.4.0:road.semantic.junction_connection_lane_link_id
 
     Description: linked Lane shall exist in connected LaneSection.
 
     Severity: WARNING
 
-    Version range: [1.7.0, )
+    Version range: [1.4.0, )
 
     Remark:
         TODO
     """
-    logging.info("Executing road.semantic.junction_connection_lane_link_id_validity check.")
+    logging.info("Executing road.semantic.junction_connection_lane_link_id check.")
 
     _check_all_junctions(checker_data)
