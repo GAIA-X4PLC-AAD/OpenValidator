@@ -148,6 +148,7 @@ def run_checks(config: Configuration, result: Result) -> None:
     # 1. Run semantic checks
     execute_checker(semantic.junction_connection_lane_link_id, checker_data)
     execute_checker(semantic.junction_connection_lane_linkage_order, checker_data)
+    execute_checker(semantic.junction_connection_road_linkage, checker_data)
     execute_checker(semantic.road_lane_link_id, checker_data)
     execute_checker(semantic.road_lane_type_none, checker_data)
 

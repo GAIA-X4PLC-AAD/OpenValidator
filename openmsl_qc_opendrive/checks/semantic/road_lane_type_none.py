@@ -28,7 +28,7 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
 
             lane_list = utils.get_left_and_right_lanes_from_lane_section(laneSection)
             for lane in lane_list:
-                laneType = lane.attrib["type"]
+                laneType = utils.get_type_from_lane(lane)
                 if laneType != "none":
                     continue               
 

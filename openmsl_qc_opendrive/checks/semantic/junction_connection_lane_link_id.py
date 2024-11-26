@@ -27,6 +27,8 @@ def _check_all_junctions(checker_data: models.CheckerData) -> None:
         for connection in connections:
             connectionID = connection.attrib["id"]
             connectedLaneSections = utils.get_incoming_and_connection_contacting_lane_sections(connection, roads)
+            if connectedLaneSections is None:
+                continue                            # checked in junction_connection_road_linkage
 
             laneLinks = utils.get_lane_links_from_connection(connection)
             for laneLink in laneLinks:
