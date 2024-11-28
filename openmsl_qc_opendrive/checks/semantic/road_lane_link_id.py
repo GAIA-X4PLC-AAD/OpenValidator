@@ -46,24 +46,25 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
             lane_list = utils.get_left_and_right_lanes_from_lane_section(laneSection.lane_section)
             for lane in lane_list:
                 issue_descriptions = []
+                lane_id = lane.get("id")
 
                 predecessors = utils.get_predecessor_lane_ids(lane)
                 for predecessor in predecessors:
                     if prevLaneSection is None:
-                        issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane.attrib["id"]} has invalid lane linkage : lane predecessor not found")
+                        issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane_id} has invalid lane linkage : lane predecessor not found")
                     else:
                         connectedLane = utils.get_lane_from_lane_section(prevLaneSection, predecessor)
                         if connectedLane is None:
-                            issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane.attrib["id"]} has invalid lane linkage : lane predecessor not found")
+                            issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane_id} has invalid lane linkage : lane predecessor not found")
 
                 successors = utils.get_successor_lane_ids(lane)
                 for successor in successors:
                     if succLaneSection is None:
-                        issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane.attrib["id"]} has invalid lane linkage : lane successor not found")
+                        issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane_id} has invalid lane linkage : lane successor not found")
                     else:
                         connectedLane = utils.get_lane_from_lane_section(succLaneSection, successor)
                         if connectedLane is None:
-                            issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane.attrib["id"]} has invalid lane linkage : lane successor not found")
+                            issue_descriptions.append(f"road {roadID} LaneSection {s_coordinate} Lane {lane_id} has invalid lane linkage : lane successor not found")
 
                 for description in issue_descriptions:
                     # register issues
