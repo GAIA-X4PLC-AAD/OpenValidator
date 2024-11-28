@@ -10,5 +10,6 @@ from . import (
     junction_connection_road_linkage as junction_connection_road_linkage,
     road_lanesection_min_length as road_lanesection_min_length,
     road_lane_link_id as road_lane_link_id,
-    road_lane_type_none as road_lane_type_none,    
+    road_lane_type_none as road_lane_type_none,
+    road_signal_object_lane_linkage as road_signal_object_lane_linkage,
 )
