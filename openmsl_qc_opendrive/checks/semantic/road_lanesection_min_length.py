@@ -25,7 +25,7 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
         roadID = road.attrib["id"]
         laneSections = utils.get_sorted_lane_sections_with_length_from_road(road)
         for laneSection in laneSections:
-            if laneSection.length < LANESECTION_MIN_LENGTH:# and laneSectionLength > 0.0:
+            if laneSection.length < LANESECTION_MIN_LENGTH and laneSection.length >= 0.0:
                 s_coordinate = utils.get_s_from_lane_section(laneSection.lane_section)
                 description = f"road {roadID} has too short laneSection s={s_coordinate} (lengths: {laneSection.length})"
 
