@@ -44,7 +44,6 @@ def _check_all_junctions(checker_data: models.CheckerData) -> None:
         connections = utils.get_connections_from_junction(junction)
 
         connectionRoads = []
-        issue_descriptions = []
         for connection in connections:
             connectingRoadId = utils.get_connecting_road_id_from_connection(connection)
             if connectingRoadId is None:                    # direct junctions have no connection roads

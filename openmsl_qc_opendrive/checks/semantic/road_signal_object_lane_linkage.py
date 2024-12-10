@@ -24,8 +24,8 @@ def check_validity(signal_object: etree._Element, traffic_rule: models.TrafficHa
 
     # check if lanes exist at signal/object position
     id = signal_object.attrib['id']
-    sValue = float(signal_object.attrib['s'])
-    tValue = float(signal_object.attrib['t'])
+    sValue = utils.to_float(signal_object.attrib['s'])
+    tValue = utils.to_float(signal_object.attrib['t'])
     fromLane = validity.attrib['fromLane']
     toLane = validity.attrib['toLane']
     laneSection = utils.get_lane_section_from_road_by_s(road, sValue)
