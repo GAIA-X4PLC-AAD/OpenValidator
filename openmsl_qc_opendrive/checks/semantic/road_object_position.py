@@ -32,7 +32,6 @@ def check_object_postion_for_road(road: etree.Element, object: etree.Element, ch
     if objectS - roadLength > EPSILON_S_ON_ROAD:
         issue_descriptions.append(f"object {objectID} of road {roadID} has too high s value {objectS} (road length = {roadLength})")
         objectS = roadLength
-#        checker_data.checker.gen_issue(IssueLevel.WARNING, message, create_location_for_road(object, roadID, objectS, None))
 
     # check t position
     objectT = 0.0
@@ -40,21 +39,18 @@ def check_object_postion_for_road(road: etree.Element, object: etree.Element, ch
         objectT = utils.to_float(object.attrib["t"]) 
         if objectT < -MAX_RANGE_OBJECT_T or objectT > MAX_RANGE_OBJECT_T:
             issue_descriptions.append(f"object {objectID} of road {roadID} has t value {objectT} out of range (-{MAX_RANGE_OBJECT_T}, +{MAX_RANGE_OBJECT_T})")
-#            checker_data.checker.gen_issue(IssueLevel.WARNING, message, create_location_for_road(object, roadID, objectS, objectT))
 
     # check zOffset
     if object.tag == "object":
         objectZOffset = utils.to_float(object.attrib["zOffset"])
         if objectZOffset < -MAX_RANGE_OBJECT_ZOFFSET or objectZOffset > MAX_RANGE_OBJECT_ZOFFSET:
             issue_descriptions.append(f"object {objectID} of road {roadID} has zOffset value {objectZOffset} out of range (-{MAX_RANGE_OBJECT_ZOFFSET}, +{MAX_RANGE_OBJECT_ZOFFSET})")
-#            checker_data.checker.gen_issue(IssueLevel.WARNING, message, create_location_for_road(object, roadID, objectS, objectT))
 
     # check length of tunnel, bridge
     if object.tag == "tunnel" or object.tag == "bridge":
         objectLength = utils.to_float(object.attrib["length"]) 
         if objectS  + objectLength - roadLength  > EPSILON_S_ON_ROAD:
             issue_descriptions.append(f"{object.tag} {objectID} of road {roadID} is too long (EndS = {objectS  + objectLength}, road length = {roadLength})")
-#            checker_data.checker.gen_issue(IssueLevel.WARNING, message, create_location_from_element(object))
     
     for description in issue_descriptions:
         # register issues

@@ -28,21 +28,23 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
         for laneSection in laneSection_list:
             s_coordinate = utils.get_s_from_lane_section(laneSection.lane_section)
 
+            prevLaneSection = None
             if index == 0 and predRoad:
-                prevLaneSection = utils.get_contact_lane_section_from_linked_road(predRoad, roads).lane_section
+                connectedSection = utils.get_contact_lane_section_from_linked_road(predRoad, roads)
+                if connectedSection:
+                    prevLaneSection = connectedSection.lane_section
             elif index > 0:
                 prevLaneSection = laneSection_list[index - 1].lane_section
-            else:
-                prevLaneSection = None
 
+            succLaneSection = None
             if index + 1 == len(laneSection_list) and succRoad:
-                succLaneSection = utils.get_contact_lane_section_from_linked_road(succRoad, roads).lane_section
+                connectedSection = utils.get_contact_lane_section_from_linked_road(succRoad, roads)
+                if connectedSection:
+                    succLaneSection = connectedSection.lane_section
             elif index + 1 < len(laneSection_list):
                 succLaneSection = laneSection_list[index + 1].lane_section
-            else:
-                succLaneSection = None
-            index = index + 1                
 
+            index = index + 1
             lane_list = utils.get_left_and_right_lanes_from_lane_section(laneSection.lane_section)
             for lane in lane_list:
                 issue_descriptions = []

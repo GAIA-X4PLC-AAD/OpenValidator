@@ -155,9 +155,12 @@ def run_checks(config: Configuration, result: Result) -> None:
     execute_checker(semantic.road_lane_link_id, checker_data)
     execute_checker(semantic.road_lane_type_none, checker_data)
     execute_checker(semantic.road_lane_width, checker_data)
+    execute_checker(semantic.road_link_id, checker_data)
     execute_checker(semantic.road_object_position, checker_data)
+    execute_checker(semantic.road_object_size, checker_data)
     execute_checker(semantic.road_signal_object_lane_linkage, checker_data)
     execute_checker(semantic.road_signal_position, checker_data)
+    execute_checker(semantic.road_signal_size, checker_data)
 
     # 2. Run geometry checks
     execute_checker(geometry.road_geometry_length, checker_data)

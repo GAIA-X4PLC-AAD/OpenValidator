@@ -14,7 +14,10 @@ from . import (
     road_lane_link_id as road_lane_link_id,
     road_lane_type_none as road_lane_type_none,
     road_lane_width as road_lane_width,
+    road_link_id as road_link_id,
     road_object_position as road_object_position,
+    road_object_size as road_object_size,
     road_signal_object_lane_linkage as road_signal_object_lane_linkage,
     road_signal_position as road_signal_position,
+    road_signal_size as road_signal_size,
 )
