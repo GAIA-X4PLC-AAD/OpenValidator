@@ -8,6 +8,7 @@ from . import (
     junction_connection_lane_link_id as junction_connection_lane_link_id,
     junction_connection_lane_linkage_order as junction_connection_lane_linkage_order,
     junction_connection_road_linkage as junction_connection_road_linkage,
+    junction_driving_lanes_continue as junction_driving_lanes_continue,
     road_lanesection_min_length as road_lanesection_min_length,
     road_lanesection_s as road_lanesection_s,
     road_lane_id_order as road_lane_id_order,
