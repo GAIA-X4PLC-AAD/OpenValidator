@@ -66,7 +66,7 @@ def _check_all_roads(checker_data: models.CheckerData) -> None:
 
 def check_rule(checker_data: models.CheckerData) -> None:
     """
-    Rule ID: openmsl.net:xodr:1.4.0:road.semantic.road_lane_id
+    Rule ID: openmsl.net:xodr:1.4.0:road.semantic.road_link_id
 
     Description: checks if linked Predecessor/Successor road/junction exist.
 
@@ -77,6 +77,6 @@ def check_rule(checker_data: models.CheckerData) -> None:
     Remark:
         TODO
     """
-    logging.info("Executing road.semantic.road_lane_id check.")
+    logging.info("Executing road.semantic.road_link_id check.")
 
     _check_all_roads(checker_data)
