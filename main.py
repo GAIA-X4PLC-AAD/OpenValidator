@@ -34,7 +34,7 @@ def main():
     # get output dir
     output_directory = Path(args.output_directory)
     if not output_directory.exists():
-        logging.info(f'Provided output foler ({output_directory.absolute()}) does not exist. Creating it...')
+        logging.info(f'Provided output folder ({output_directory.absolute()}) does not exist. Creating it...')
         output_directory.mkdir(exist_ok=True, parents=True)
     elif output_directory.exists() and not output_directory.is_dir():
         logging.error(f'Provided output folder exists and is not an directory: {output_directory.absolute()}')
@@ -48,11 +48,11 @@ def main():
     issue_counter = []
     # validate input files
     for file in get_files(args.INPUT_FILES):
-        output_file = output_directory / (file.name + '.' + args.output_type)        
-        
-        # validate        
+        output_file = output_directory / (file.name + '.' + args.output_type)
+
+        # validate
         result, valid = validate(file, args.addition_check_dirs, config_path, args.format)
-        
+
         # write result
         if valid:
             logging.info(f'write to {output_file}')

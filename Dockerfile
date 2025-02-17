@@ -17,3 +17,5 @@ RUN chmod +x entrypoint.sh
 
 # Set the entry point for the container
 # CMD [ "python3", "main.py" ]
+
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]

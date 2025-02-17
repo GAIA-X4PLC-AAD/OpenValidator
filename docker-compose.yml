@@ -1,0 +1,9 @@
+version: '3'
+services:
+  open_validator:
+    image: open_validator
+    build: .
+    container_name: open_validator
+    volumes:
+      - ./data:/app/data
+    command: -i data/inputs/sampleODR -o data/outputs -e true -t docker
