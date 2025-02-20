@@ -1,1 +1,0 @@
-ORDER=['base_checks', 'schema_checks', 'semantic_checks', 'geometry_checks', 'tool_compatibility_checks']

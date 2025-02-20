@@ -1,118 +1,43 @@
-# Checker Lib 
-the Checker Lib checks files/folders for validity. The framework has a flexible structure so that further formats, categories, checks and output formats can be added.
-The following are currently checked 
-- ASAM OpenDRIVE 1.1 - 1.7
-- ASAM OpenSCENARIO 0.9.1 - 1.1.0
+Envited OpenMSL QualityChecker bundle for ASAM OpenDRIVE
+====
 
-# Motivation
-We want to achieve a free, comprehensive and uniform validation of ASAM OpenX Standards
+# Description
+This repository contains, in addition to the ASAM QualityChecker CheckerBundles, simulation specific checks for the ASAM OpenDRIVE format. 
+ASAM Quality Checker Framework: https://www.asam.net/standards/asam-quality-checker/
 
-# Installation / How to setup
+# Checks
+The checks are located in the "checks" folder and the corresponding test example in the "examples" folder.
 
-1. **Clone this git repository:** ``` git clone https://github.com/GAIA-X4PLC-AAD/OpenValidator ```
-
-2. **Install python** (https://www.python.org/, used python version: Python 3.12.0)
-
-    How to check current version on windows: ```py --version```
-    How to check current version on macOS: ```python3 --version```
-
-3. **Install packages with pip**  
-
-    How to check current version on windows: ```py -m pip --version```
-    How to check current version on macOS: ```python3 -m pip --version```  
-
-    **Needed packages:**
-   
-| name            | used version | installation link for windows     | installation link for macOS            |
-|-----------------|--------------|-----------------------------------|----------------------------------------|
-| lxml            | 4.9.3        | py -m pip install lxml            | python3 -m pip install lxml            |
-| scipy           | 1.21.6       | py -m pip install scipy           | python3 -m pip install scipy           |
-
-# Development
-Used integrated development environment: Visual Studio Code version 1.84.2
-
-# How to run
-1. Open your console/terminal
-2. Navigate to cloned folder from GitHub with the main.py in it
-3. Use on windows: ```py main.py``` or on macOS: ```python3 main.py```
-4. Use following arguments:
-    - ```  file(s) or folder to validate```
-    - ```-f  Specification of the formats to be checked (file extension or check folder), e.g. xodr for OpenDrive.```
-    - ```-a  Additional directories for validation checks.```
-    - ```-c  Path to config file. Otherwise the config is taken from the format folder```
-    - ```-o  Path to validation report folder```
-    - ```-t  Output format of result report (available: xqar, json, txt)```
-    - ```-e  Should the script be terminated after an error ('exit-if-error') or not ('no-exit').```
+- geometry
+  - road_geometry_length.py: Length of geometry elements shall be greater than epsilon and need to match with start of next elemen
+  - road_geometry_parampoly3_attributes.py: ParamPoly3 parameters @aU, @aV and @bV shall be zero, @bU shall be > 0
+  - road_min_length.py: Road Length shall be greater than epsilon
     
-5. You will find the result file in validation report folder.
-
-# Structure
-- Main.py
-  - reads, checks parameters and for each file calls validation and writes output
-- validator.py
-  - loads registered bundles, loads and executes check
-- result_report.py
-  - Data structure for report file and functions for registering
-  - Writes Report Tree as different formats
-- [format]
-   - folder for specific format 
-   - config.json
-     - configuration for specific format 
-   - format.json
-     - informatoin about format
-   - [checks]
-     - __init__.py
-       - define category / bundle order 
-     - [categories]
-       - __init__.py
-         - category / bundle information, define check order
-       - check_[type].py
-         - individual check
-   - [examples]
-    - examples for each check and category
-
-# Categories
-- base checks
-  - check if file exist and loadable
-- schema checks
-  - Test against schema file and check value type
-- semantic checks
-  - check links, order, ranges of main elements
-- geometry checks
-  - Checks the correctness of values, ranges and steadiness 
 - linkage
-  - check to other files and check if references / position is correct
-- tool compability
-  - loadable / usable in applications 
-  - check special requirements of applications 
+  - crg_reference.py: heck reference to OpenCRG files
+
+- semantic
+  - junction_connection_lane_link_id.py: linked Lane shall exist in connected LaneSection
+  - junction_connection_lane_linkage_order.py: Lane Links of Junction Connections should be ordered from left to right
+  - junction_connection_road_linkage.py: Connection Roads need Predecessor and Successor. Connection Roads should be registered in Connection
+  - junction_driving_lanes_continue.py: check road lane links of juction connection - each driving lane of the incoming roads must have a connection in the junction
+  - road_lane_id_order.py: lane order should be continous and without gaps
+  - road_lane_link_id.py: linked Lane shall exist in connected LaneSection
+  - road_lane_property_sOffset.py: lane sOffsets (must be ascending, not too high) and sometimes be zero
+  - road_lane_type_none.py: Lane Type shall not be None
+  - road_lane_width.py: Lane width must always be greater than 0 or at the start/end point of a lanesection >= 0
+  - road_lanesection_min_length.py: Length of lanesections shall be greater than epsilon
+  - road_lanesection_s.py: Check starting sOffset of lanesections
+  - road_link_backward.py: check if linked elements are also linked to original element
+  - road_link_id.py: checks if linked Predecessor/Successor road/junction exist
+  - road_object_position.py: check if object position is valid - s value is in range of road length, t and zOffset in range
+  - road_object_size.py: check if object size is valid - width and length, radius and height in range
+  - road_signal_object_lane_linkage.py: Linked Lanes should exist and orientation should match with driving direction
+  - road_signal_position.py: check if signal position is valid - s value is in range of road length, t and zOffset in range
+  - road_signal_size.py: check if signal size is valid - width and height in range
+ 
 - statistic
-  - count elements and lengths
-
-# Extension 
-To create a new check in an existing category, simply create a check_[type].py in the category folder and overwrite the following functions:
-- get_checker_id
-  - name of check
-- get_description
-  - description of check
-- check(checker_data: CheckerData) ->bool:
-  - actual check function
-  - Return False if validation has to be cancelled
-
-To create a new category, add a new folder under Checks and create an __init__.py with the following information:
-- CHECKER_BUNDLE_NAME=[name]
-- CHECKER_BUNDLE_DESCRIPTION=[Description]
-- CHECKER_BUNDLE_VERSION=[Version]
-- ORDER=[list of ordered checks] - optional
-
-To add a new format create a format folder in the root (preferably the name of the FileExtension) and create and fill the 
-config.json and format.json 
-
-# Output
-The result class currently outputs 3 formats
-- txt simple text file with the issues per check
-- json output as a json file
-- xqar output as XML result file for QChecker
-
-# Overview Checks
-- List of tests defined in the context of GaiaX:
-- https://ascs2008.sharepoint.com/:x:/r/sites/team/_layouts/15/Doc.aspx?sourcedoc=%7B32A490CB-E63E-4293-8063-DFB3136E0B6C%7D&file=Data_Validation.xlsx&action=default&mobileredirect=true
+  - statistic.py: Prints infos, about the content of OpenDRIVE file (signals, objects, road length)
+ 
+# Usage
+see ASAM qc-opendrive: https://github.com/asam-ev/qc-opendrive
